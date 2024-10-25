@@ -8,18 +8,23 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-            body {
-      margin: 0;
-      overflow: auto;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-image: url('img_main.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: white;
-    }
+        body {
+            margin: 0;
+            overflow: auto;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('img_main.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        #my-messages {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -28,17 +33,15 @@
         <aside class="bg-slate-200 w-64 hidden md:block">
             widget time
         </aside>
-        <div class="bg-slate-300 w-full flex flex-col justify-end items-end p-4">
-
+        <div class="bg-slate-300 w-full flex flex-col justify-end items-end p-4 bg-opacity-50">
             <div id="my-messages" class="overflow-y-auto h-full w-full">
                 <!-- our new messages -->
             </div>
 
             <form class="mx-auto mb-4 w-full mt-4">
-
                 <div class="relative flex w-full gap-2">
                     <input type="search" id="name"
-                        class=" block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="type your name" required />
                     <input type="search" id="message"
                         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -47,7 +50,6 @@
                         class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send</button>
                 </div>
             </form>
-
         </div>
     </div>
 
@@ -85,12 +87,12 @@
         window.onload = function () {
             const myMessage = document.getElementById("my-messages");
             onSnapshot(collection(db, "data"), (snapshot) => {
-                myMessage.innerHTML = ""; 
+                myMessage.innerHTML = "";
                 snapshot.forEach((doc) => {
                     const docData = doc.data();
 
                     const messageElement = document.createElement("div");
-                    messageElement.className = "flex justify-end"; 
+                    messageElement.className = "flex justify-end";
                     messageElement.innerHTML = `
                         <div class="flex items-start gap-2.5">
                             <img class="w-8 h-8 rounded-full" src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg" alt="User image">
