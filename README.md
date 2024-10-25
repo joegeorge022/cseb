@@ -1,3 +1,3 @@
 # My ChatApp
-Credits: ![Jovit Mathew](https://github.com/Jovit-Mathew236)
+Credits: [Jovit Mathew](https://github.com/Jovit-Mathew236)
 
