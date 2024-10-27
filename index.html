@@ -77,18 +77,21 @@
         addDoc,
         collection,
         onSnapshot,
+        query,
+        orderBy,
+        Timestamp
       } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCCbtly7nZvq9uX0eJqpaA8cxbL6Evgm1U",
-            authDomain: "my-chatapp-6c709.firebaseapp.com",
-            databaseURL: "https://my-chatapp-6c709-default-rtdb.firebaseio.com",
-            projectId: "my-chatapp-6c709",
-            storageBucket: "my-chatapp-6c709.appspot.com",
-            messagingSenderId: "801736370870",
-            appId: "1:801736370870:web:a0f02e448b4d0d3d9e9417",
-            measurementId: "G-TYDVJJX8P3"
-        };
+      const firebaseConfig = {
+        apiKey: "AIzaSyCCbtly7nZvq9uX0eJqpaA8cxbL6Evgm1U",
+        authDomain: "my-chatapp-6c709.firebaseapp.com",
+        databaseURL: "https://my-chatapp-6c709-default-rtdb.firebaseio.com",
+        projectId: "my-chatapp-6c709",
+        storageBucket: "my-chatapp-6c709.appspot.com",
+        messagingSenderId: "801736370870",
+        appId: "1:801736370870:web:a0f02e448b4d0d3d9e9417",
+        measurementId: "G-TYDVJJX8P3"
+      };
 
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
@@ -98,6 +101,7 @@
         const docRef = await addDoc(collection(db, "data"), {
           Name: document.getElementById("name").value,
           Message: document.getElementById("message").value,
+          Timestamp: Timestamp.now()  // Add timestamp here
         });
         console.log("Document written with ID: ", docRef.id);
         document.getElementById("name").value = "";
@@ -106,7 +110,14 @@
 
       window.onload = function () {
         const myMessage = document.getElementById("my-messages");
-        onSnapshot(collection(db, "data"), (snapshot) => {
+
+        function scrollToBottom() {
+          myMessage.scrollTop = myMessage.scrollHeight;
+        }
+
+        const messagesQuery = query(collection(db, "data"), orderBy("Timestamp", "asc"));
+
+        onSnapshot(messagesQuery, (snapshot) => {
           myMessage.innerHTML = "";
           snapshot.forEach((doc) => {
             const docData = doc.data();
@@ -114,22 +125,25 @@
             const messageElement = document.createElement("div");
             messageElement.className = "flex justify-end";
             messageElement.innerHTML = `
-                        <div class="flex items-start gap-2.5">
-                            <img class="w-8 h-8 rounded-full" src="profile.jpeg" alt="User image">
-                            <div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-se-xl rounded-s-xl dark:bg-gray-700">
-                                <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                                    <span class="text-sm font-semibold text-gray-900 dark:text-white">${docData.Name}</span>
-                                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
-                                </div>
-                                <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">${docData.Message}</p>
-                                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
-                            </div>
-                        </div>
-                    `;
+              <div class="flex items-start gap-2.5">
+                <img class="w-8 h-8 rounded-full" src="profile.jpeg" alt="User image">
+                <div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-se-xl rounded-s-xl dark:bg-gray-700">
+                  <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <span class="text-sm font-semibold text-gray-900 dark:text-white">${docData.Name}</span>
+                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">${new Date(docData.Timestamp.toDate()).toLocaleTimeString()}</span>
+                  </div>
+                  <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">${docData.Message}</p>
+                  <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+                </div>
+              </div>
+            `;
             myMessage.appendChild(messageElement);
           });
+
+          scrollToBottom();
         });
       };
     </script>
   </body>
 </html>
+
