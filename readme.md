@@ -77,3 +77,20 @@ Maintained with pride by CSE-B Class Representatives. Need help?
 ---
 
 Made with 💖 by CSE-B SJCET 
+
+
+<details>
+<summary>Lighthouse Performance </summary>
+<br>
+<img width="656" alt="Screenshot 2025-02-01 at 12 59 00 AM" src="https://github.com/user-attachments/assets/7ab66222-bf0a-4a20-be89-10010e927b12" />
+</details>
+
+
+
+
+
+
+
+
+
+
