@@ -207,23 +207,19 @@
     </button>
 
     <script>
-        // Wait for all content to load
         window.addEventListener('load', () => {
-            // Add a small delay to ensure smooth transition
             setTimeout(() => {
                 const loader = document.querySelector('.loader');
                 loader.classList.add('fade-out');
-                // Enable scrolling once loader is hidden
                 document.body.style.overflow = '';
             }, 1500);
         });
 
-        // Prevent scrolling while loader is visible
         document.body.style.overflow = 'hidden';
 
         window.addEventListener('scroll', () => {
             const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 500) { // Show button after scrolling 500px
+            if (window.scrollY > 500) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
@@ -266,7 +262,6 @@
     </script>
 
     <script>
-        // Function to check if an image exists
         async function imageExists(url) {
             try {
                 const response = await fetch(url, { method: 'HEAD' });
@@ -276,7 +271,6 @@
             }
         }
 
-        // Function to find available images
         async function findAvailableImages() {
             const images = [];
             let index = 1;
@@ -299,12 +293,10 @@
         let currentImageIndex = 0;
         let images = [];
 
-        // Populate gallery on page load
         document.addEventListener('DOMContentLoaded', async () => {
             const galleryGrid = document.querySelector('.gallery-grid');
             const template = document.getElementById('gallery-template');
             
-            // Get available images
             images = await findAvailableImages();
             
             if (images.length === 0) {
@@ -370,7 +362,6 @@
             }, 200);
         }
 
-        // Event listeners
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'block') {
                 if (e.key === 'Escape') closeLightbox();
