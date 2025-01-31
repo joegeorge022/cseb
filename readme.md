@@ -70,10 +70,10 @@ Maintained with pride by CSE-B Class Representatives. Need help?
 
 ## 🙏 Special Thanks
 
-- Our amazing faculty at SJCET
+- Our amazing faculty at SJCET 
 - Our mentors and advisors
 - Every CSE-B member who contributed
 
 ---
 
-Made with 💖 by CSE-B SJCET | © 2025 All Rights Reserved.
+Made with 💖 by CSE-B SJCET 
