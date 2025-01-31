@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; URL='https://joegeorge022.github.io/cseb/'" data-cloudflare-only>
+    <meta http-equiv="refresh" content="0; URL='https://joegeorge022.github.io/cseb/'" data-cloudflare-only id="cloudflare-redirect">
     
     <script>
-        if (window.location.hostname.includes('pages.dev')) {
+        if (window.location.hostname === 'cseb.pages.dev') {
             try {
                 if (window.navigation) {
                     window.navigation.navigate('https://joegeorge022.github.io/cseb/');
@@ -15,10 +15,13 @@
                 window.location.href = 'https://joegeorge022.github.io/cseb/';
             }
         }
-        document.addEventListener('DOMContentLoaded', () => {
-            const metaRefresh = document.querySelector('meta[data-cloudflare-only]');
+    </script>
+
+    <script>
+        if (window.location.hostname !== 'cseb.pages.dev') {
+            const metaRefresh = document.getElementById('cloudflare-redirect');
             if (metaRefresh) metaRefresh.remove();
-        });
+        }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
