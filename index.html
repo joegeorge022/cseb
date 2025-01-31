@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="refresh" content="0; URL='https://joegeorge022.github.io/cseb/'" data-cloudflare-only>
+    
     <script>
-        if (window.location.hostname.includes('pages.dev') && !sessionStorage.getItem('redirected')) {
-            sessionStorage.setItem('redirected', 'true');
-            window.location.replace('https://joegeorge022.github.io/cseb/');
+        if (window.location.hostname.includes('pages.dev')) {
+            try {
+                if (window.navigation) {
+                    window.navigation.navigate('https://joegeorge022.github.io/cseb/');
+                } else {
+                    window.location.replace('https://joegeorge022.github.io/cseb/');
+                }
+            } catch (e) {
+                window.location.href = 'https://joegeorge022.github.io/cseb/';
+            }
         }
+        document.addEventListener('DOMContentLoaded', () => {
+            const metaRefresh = document.querySelector('meta[data-cloudflare-only]');
+            if (metaRefresh) metaRefresh.remove();
+        });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
