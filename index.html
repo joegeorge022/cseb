@@ -207,19 +207,23 @@
     </button>
 
     <script>
+        // Wait for all content to load
         window.addEventListener('load', () => {
+            // Add a small delay to ensure smooth transition
             setTimeout(() => {
                 const loader = document.querySelector('.loader');
                 loader.classList.add('fade-out');
+                // Enable scrolling once loader is hidden
                 document.body.style.overflow = '';
             }, 1500);
         });
 
+        // Prevent scrolling while loader is visible
         document.body.style.overflow = 'hidden';
 
         window.addEventListener('scroll', () => {
             const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 500) {
+            if (window.scrollY > 500) { // Show button after scrolling 500px
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
@@ -262,6 +266,7 @@
     </script>
 
     <script>
+        // Function to check if an image exists
         async function imageExists(url) {
             try {
                 const response = await fetch(url, { method: 'HEAD' });
@@ -271,19 +276,46 @@
             }
         }
 
+        // Function to find available images with multiple base paths
         async function findAvailableImages() {
             const images = [];
             let index = 1;
+            let basePath = '';
             
+            // Try to determine the correct base path
+            const possiblePaths = [
+                'images/', // Regular path
+                '/cseb/images/', // GitHub Pages path
+                'https://joegeorge022.github.io/cseb/images/' // Full GitHub Pages URL
+            ];
+
+            // Find the working base path
+            for (const path of possiblePaths) {
+                if (await imageExists(`${path}image1.jpg`)) {
+                    basePath = path;
+                    break;
+                }
+            }
+
+            // If no working path found, return empty array
+            if (!basePath) {
+                console.error('No valid image path found');
+                return images;
+            }
+
+            // Find all available images
             while (true) {
                 const imageName = `image${index}.jpg`;
-                const exists = await imageExists(`images/${imageName}`);
+                const exists = await imageExists(`${basePath}${imageName}`);
                 
                 if (!exists) {
                     break;
                 }
                 
-                images.push(imageName);
+                images.push({
+                    name: imageName,
+                    path: `${basePath}${imageName}`
+                });
                 index++;
             }
             
@@ -293,10 +325,12 @@
         let currentImageIndex = 0;
         let images = [];
 
+        // Update gallery population
         document.addEventListener('DOMContentLoaded', async () => {
             const galleryGrid = document.querySelector('.gallery-grid');
             const template = document.getElementById('gallery-template');
             
+            // Get available images
             images = await findAvailableImages();
             
             if (images.length === 0) {
@@ -304,25 +338,26 @@
                 return;
             }
 
-            images.forEach((imageName, index) => {
+            images.forEach((image, index) => {
                 const clone = template.content.cloneNode(true);
                 const item = clone.querySelector('.gallery-item');
                 const img = clone.querySelector('img');
                 
-                img.src = `images/${imageName}`;
+                img.src = image.path;
                 img.alt = `Memory ${index + 1}`;
-                item.onclick = () => openLightbox(imageName);
+                item.onclick = () => openLightbox(image);
                 
                 galleryGrid.appendChild(clone);
             });
         });
 
-        function openLightbox(imageName) {
+        // Update openLightbox function
+        function openLightbox(image) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             
-            currentImageIndex = images.indexOf(imageName);
-            lightboxImg.src = `images/${imageName}`;
+            currentImageIndex = images.findIndex(img => img.name === image.name);
+            lightboxImg.src = image.path;
             
             lightbox.style.display = 'flex';
             requestAnimationFrame(() => {
@@ -332,19 +367,7 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.classList.add('fade-out');
-            
-            setTimeout(() => {
-                lightbox.style.display = 'none';
-                document.body.style.overflow = '';
-                lightboxImg.classList.remove('fade-out', 'fade-in');
-            }, 300);
-        }
-
+        // Update changeImage function
         function changeImage(direction, event) {
             if (event) event.stopPropagation();
             
@@ -356,12 +379,13 @@
                 if (currentImageIndex >= images.length) currentImageIndex = 0;
                 if (currentImageIndex < 0) currentImageIndex = images.length - 1;
                 
-                lightboxImg.src = `images/${images[currentImageIndex]}`;
+                lightboxImg.src = images[currentImageIndex].path;
                 lightboxImg.classList.remove('fade-out');
                 lightboxImg.classList.add('fade-in');
             }, 200);
         }
 
+        // Event listeners
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'block') {
                 if (e.key === 'Escape') closeLightbox();
