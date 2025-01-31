@@ -74,7 +74,7 @@
                         <source src="song.mp3" type="audio/mpeg">
                     </audio>
                 </button>
-                
+
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -411,6 +411,25 @@
                 lightboxImg.classList.remove('fade-out', 'fade-in');
             }, 300);
         }
+    </script>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+        // Music player functionality
+        const musicBtn = document.getElementById('musicBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+            } else {
+                bgMusic.play();
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
     </script>
 </body>
 </html>
