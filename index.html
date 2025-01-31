@@ -266,57 +266,28 @@
     </script>
 
     <script>
-        // Function to check if an image exists
-        async function imageExists(url) {
-            try {
-                const response = await fetch(url, { method: 'HEAD' });
-                return response.ok;
-            } catch {
-                return false;
-            }
-        }
-
-        // Function to find available images with multiple base paths
+        // Function to find available images
         async function findAvailableImages() {
             const images = [];
             let index = 1;
-            let basePath = '';
             
-            // Try to determine the correct base path
-            const possiblePaths = [
-                'images/', // Regular path
-                '/cseb/images/', // GitHub Pages path
-                'https://joegeorge022.github.io/cseb/images/' // Full GitHub Pages URL
-            ];
-
-            // Find the working base path
-            for (const path of possiblePaths) {
-                if (await imageExists(`${path}image1.jpg`)) {
-                    basePath = path;
-                    break;
-                }
-            }
-
-            // If no working path found, return empty array
-            if (!basePath) {
-                console.error('No valid image path found');
-                return images;
-            }
-
-            // Find all available images
+            // Use a relative path that works for both GitHub Pages and Cloudflare
+            const basePath = './images/';
+            
             while (true) {
                 const imageName = `image${index}.jpg`;
-                const exists = await imageExists(`${basePath}${imageName}`);
-                
-                if (!exists) {
+                try {
+                    const response = await fetch(`${basePath}${imageName}`);
+                    if (!response.ok) break;
+                    
+                    images.push({
+                        name: imageName,
+                        path: `${basePath}${imageName}`
+                    });
+                    index++;
+                } catch {
                     break;
                 }
-                
-                images.push({
-                    name: imageName,
-                    path: `${basePath}${imageName}`
-                });
-                index++;
             }
             
             return images;
@@ -393,6 +364,20 @@
                 if (e.key === 'ArrowRight') changeImage(1);
             }
         });
+
+        // Also add back the closeLightbox function that was accidentally removed
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.classList.add('fade-out');
+            
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = '';
+                lightboxImg.classList.remove('fade-out', 'fade-in');
+            }, 300);
+        }
     </script>
 </body>
 </html>
