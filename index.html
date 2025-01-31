@@ -271,8 +271,12 @@
             const images = [];
             let index = 1;
             
-            // Use a relative path that works for both GitHub Pages and Cloudflare
-            const basePath = './images/';
+            // Get the current domain
+            const currentDomain = window.location.hostname;
+            // Set base path according to the domain
+            const basePath = currentDomain.includes('pages.dev') 
+                ? '/images/' 
+                : '/cseb/images/';
             
             while (true) {
                 const imageName = `image${index}.jpg`;
@@ -290,6 +294,7 @@
                 }
             }
             
+            console.log('Found images:', images); // Debug log
             return images;
         }
 
