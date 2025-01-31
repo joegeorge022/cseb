@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE-B Class Website</title>
+    <meta name="description" content="Welcome to the CSE-B Class Website, where you can connect with classmates, view memories, and stay updated on events.">
+    <meta name="keywords" content="CSE-B, class website, students, events, memories, connect, computer science, engineering, college, university, education, alumni">
+    <meta name="author" content="CSE-B Class">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="image.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="image.jpg">
+    
+    <meta property="og:title" content="CSE-B Class Website">
+    <meta property="og:description" content="Connect with classmates, view memories, and stay updated on events.">
+    <meta property="og:image" content="image.jpg">
+    <meta property="og:url" content="https://cse-b.pages.dev/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CSE-B Class Website">
+    <meta name="twitter:description" content="Connect with classmates, view memories, and stay updated on events.">
+    <meta name="twitter:image" content="image.jpg">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="logo-container">
+                <img src="image.jpg" alt="CSE FLIQZZZ" class="loader-logo">
+                <div class="loading-ring"></div>
+            </div>
+            <div class="text-container">
+                <span class="glitch-text" data-text="CSE-B">CSE-B</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="site-header">
+            <div class="header-content">
+                <a href="https://cseb.pages.dev"><h1 class="glitch-text" data-text="CSE-B">CSE-B</h1></a>
+                
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav class="nav-glass">
+                    <a href="#home" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a>
+                    <a href="#squad" class="nav-link"><i class="fas fa-users"></i> <span>Squad</span></a>
+                    <a href="#memories" class="nav-link"><i class="fas fa-camera"></i> <span>Memories</span></a>
+                    <a href="#events" class="nav-link"><i class="fas fa-calendar"></i> <span>Events</span></a>
+                    <a href="#connect" class="nav-link"><i class="fas fa-link"></i> <span>Connect</span></a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Welcome to <span class="gradient-text">CSE-B</span></h2>
+                    <p class="hero-description">Creativity & Friendship</p>
+                    <div class="hero-buttons">
+                        <a href="#memories" class="btn btn-primary">
+                            <i class="fas fa-camera"></i>
+                            View Memories
+                        </a>
+                        <a href="#events" class="btn btn-secondary">
+                            <i class="fas fa-calendar"></i>
+                            Events
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-background">
+                    <div class="geometric-shapes"></div>
+                    <div class="floating-elements"></div>
+                </div>
+            </section>
+
+            <section id="squad" class="squad-section">
+                <h2 class="section-title">Our Amazing Squad</h2>
+                <p class="section-description">Meet the talented minds behind CSE-B</p>
+                
+                <div class="instagram-feed">
+                    <blockquote 
+                        class="instagram-media glass-card" 
+                        data-instgrm-permalink="https://www.instagram.com/p/DCZmb5KMokC/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                    
+                    <blockquote 
+                        class="instagram-media glass-card" 
+                        data-instgrm-permalink="https://www.instagram.com/p/DCWbni2orB9/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                    
+                    <blockquote 
+                        class="instagram-media glass-card" 
+                        data-instgrm-permalink="https://www.instagram.com/p/DBJmYakCD_8/"
+                        data-instgrm-version="14">
+                    </blockquote>
+                </div>
+
+                <script async src="//www.instagram.com/embed.js"></script>
+            </section>
+
+            <section id="memories" class="memories-section">
+                <h2 class="section-title">Memory Lane</h2>
+                <p class="section-description">Capturing moments, creating stories</p>
+                
+                <div class="gallery">
+                    <div class="gallery-grid">
+                        <template id="gallery-template">
+                            <div class="gallery-item glass-card">
+                                <img loading="lazy">
+                                <div class="gallery-overlay">
+                                    <span>View Image</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                    <button class="close-btn" onclick="closeLightbox()">&times;</button>
+                    <img id="lightbox-img" src="" alt="Lightbox Image">
+                    <button class="nav-btn prev" onclick="changeImage(-1, event)">❮</button>
+                    <button class="nav-btn next" onclick="changeImage(1, event)">❯</button>
+                </div>
+            </section>
+
+            <section id="events" class="events-section">
+                <h2 class="section-title">Upcoming Events</h2>
+                <p class="section-description">Stay tuned for exciting events</p>
+                
+                <div class="events-grid">
+                    <div class="event-card glass-card">
+                        <div class="event-date">Coming Soon</div>
+                        <h3>Asthra 2025</h3>
+                        <p>Get ready for an amazing celebration of technology and creativity!</p>
+                        <a href="https://cseb.pages.dev" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="event-card glass-card">
+                        <div class="event-date">Next Month</div>
+                        <h3>Event 2</h3>
+                        <p>Event 2</p>
+                        <a href="https://cseb.pages.dev" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="connect" class="connect-section">
+                <h2 class="section-title">Stay Connected</h2>
+                <p class="section-description">Join our digital community</p>
+                
+                <div class="social-links">
+                    <a href="https://www.instagram.com/cse_fliqzzz/" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Follow us on Instagram</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+    <script src="main.js"></script>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.querySelector('.menu-overlay');
+            
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('nav');
+                const hamburger = document.querySelector('.hamburger');
+                const overlay = document.querySelector('.menu-overlay');
+                
+                nav.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+
+    <div class="background-effects">
+        <div class="gradient-sphere"></div>
+        <div class="geometric-grid"></div>
+        <div class="particles"></div>
+    </div>
+
+    <button class="back-to-top glass-card" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Wait for all content to load
+        window.addEventListener('load', () => {
+            // Add a small delay to ensure smooth transition
+            setTimeout(() => {
+                const loader = document.querySelector('.loader');
+                loader.classList.add('fade-out');
+                // Enable scrolling once loader is hidden
+                document.body.style.overflow = '';
+            }, 1500);
+        });
+
+        // Prevent scrolling while loader is visible
+        document.body.style.overflow = 'hidden';
+
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 500) { // Show button after scrolling 500px
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fun-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 60;
+                const elementPosition = target.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Function to check if an image exists
+        async function imageExists(url) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch {
+                return false;
+            }
+        }
+
+        // Function to find available images
+        async function findAvailableImages() {
+            const images = [];
+            let index = 1;
+            
+            while (true) {
+                const imageName = `image${index}.jpg`;
+                const exists = await imageExists(`images/${imageName}`);
+                
+                if (!exists) {
+                    break;
+                }
+                
+                images.push(imageName);
+                index++;
+            }
+            
+            return images;
+        }
+
+        let currentImageIndex = 0;
+        let images = [];
+
+        // Populate gallery on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            const galleryGrid = document.querySelector('.gallery-grid');
+            const template = document.getElementById('gallery-template');
+            
+            // Get available images
+            images = await findAvailableImages();
+            
+            if (images.length === 0) {
+                galleryGrid.innerHTML = '<p class="no-images">No images available</p>';
+                return;
+            }
+
+            images.forEach((imageName, index) => {
+                const clone = template.content.cloneNode(true);
+                const item = clone.querySelector('.gallery-item');
+                const img = clone.querySelector('img');
+                
+                img.src = `images/${imageName}`;
+                img.alt = `Memory ${index + 1}`;
+                item.onclick = () => openLightbox(imageName);
+                
+                galleryGrid.appendChild(clone);
+            });
+        });
+
+        function openLightbox(imageName) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            currentImageIndex = images.indexOf(imageName);
+            lightboxImg.src = `images/${imageName}`;
+            
+            lightbox.style.display = 'flex';
+            requestAnimationFrame(() => {
+                lightboxImg.classList.add('fade-in');
+            });
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.classList.add('fade-out');
+            
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = '';
+                lightboxImg.classList.remove('fade-out', 'fade-in');
+            }, 300);
+        }
+
+        function changeImage(direction, event) {
+            if (event) event.stopPropagation();
+            
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentImageIndex += direction;
+                if (currentImageIndex >= images.length) currentImageIndex = 0;
+                if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+                
+                lightboxImg.src = `images/${images[currentImageIndex]}`;
+                lightboxImg.classList.remove('fade-out');
+                lightboxImg.classList.add('fade-in');
+            }, 200);
+        }
+
+        // Event listeners
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+    </script>
+</body>
+</html>
