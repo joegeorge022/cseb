@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (window.location.hostname.includes('pages.dev') && !sessionStorage.getItem('redirected')) {
+            sessionStorage.setItem('redirected', 'true');
+            window.location.replace('https://joegeorge022.github.io/cseb/');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSE-B Class Website</title>
@@ -207,23 +213,19 @@
     </button>
 
     <script>
-        // Wait for all content to load
         window.addEventListener('load', () => {
-            // Add a small delay to ensure smooth transition
             setTimeout(() => {
                 const loader = document.querySelector('.loader');
                 loader.classList.add('fade-out');
-                // Enable scrolling once loader is hidden
                 document.body.style.overflow = '';
             }, 1500);
         });
 
-        // Prevent scrolling while loader is visible
         document.body.style.overflow = 'hidden';
 
         window.addEventListener('scroll', () => {
             const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 500) { // Show button after scrolling 500px
+            if (window.scrollY > 500) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
@@ -266,14 +268,11 @@
     </script>
 
     <script>
-        // Function to find available images
         async function findAvailableImages() {
             const images = [];
             let index = 1;
             
-            // Get the current domain
             const currentDomain = window.location.hostname;
-            // Set base path according to the domain
             const basePath = currentDomain.includes('pages.dev') 
                 ? '/images/' 
                 : '/cseb/images/';
@@ -294,19 +293,17 @@
                 }
             }
             
-            console.log('Found images:', images); // Debug log
+            console.log('Found images:', images);
             return images;
         }
 
         let currentImageIndex = 0;
         let images = [];
 
-        // Update gallery population
         document.addEventListener('DOMContentLoaded', async () => {
             const galleryGrid = document.querySelector('.gallery-grid');
             const template = document.getElementById('gallery-template');
             
-            // Get available images
             images = await findAvailableImages();
             
             if (images.length === 0) {
@@ -327,7 +324,6 @@
             });
         });
 
-        // Update openLightbox function
         function openLightbox(image) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -343,7 +339,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Update changeImage function
         function changeImage(direction, event) {
             if (event) event.stopPropagation();
             
@@ -361,7 +356,6 @@
             }, 200);
         }
 
-        // Event listeners
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'block') {
                 if (e.key === 'Escape') closeLightbox();
@@ -370,7 +364,6 @@
             }
         });
 
-        // Also add back the closeLightbox function that was accidentally removed
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
