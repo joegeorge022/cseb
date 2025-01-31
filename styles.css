@@ -1774,7 +1774,6 @@ html, body {
     }
 }
 
-/* Optimize for performance */
 @media (prefers-reduced-motion: reduce) {
     .pulse-ring,
     .laser-beam,
@@ -1787,22 +1786,21 @@ html, body {
     }
 }
 
-/* Simplified Confetti Pop Animation */
 .confetti-pop {
     position: fixed;
-    width: 6px;  /* Smaller uniform size */
+    width: 6px;
     height: 6px;
     pointer-events: none;
     z-index: 10000;
     transform-origin: center;
-    animation: confettiPop 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Smoother easing */
+    animation: confettiPop 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     box-shadow: 0 0 5px currentColor;
-    border-radius: 50%;  /* Always circular */
-    opacity: 0.9;  /* More opaque */
-    will-change: transform, opacity; /* GPU hint */
-    backface-visibility: hidden; /* GPU acceleration */
-    -webkit-font-smoothing: antialiased; /* Smoother rendering */
-    transform: translateZ(0); /* Force GPU acceleration */
+    border-radius: 50%;
+    opacity: 0.9; 
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased; 
+    transform: translateZ(0)
 }
 
 @keyframes confettiPop {
@@ -1822,7 +1820,6 @@ html, body {
     }
 }
 
-/* Smoother flash animation */
 @keyframes flash {
     0% { 
         transform: scale3d(0, 0, 1);
@@ -1834,7 +1831,6 @@ html, body {
     }
 }
 
-/* Gallery Styles */
 .gallery {
     margin: 2rem 0;
     padding: 0 1rem;
@@ -1851,7 +1847,7 @@ html, body {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 15px; /* Increased border radius */
+    border-radius: 15px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -1865,40 +1861,38 @@ html, body {
     height: 250px;
     object-fit: cover;
     transition: transform 0.3s ease;
-    border-radius: 15px; /* Match parent's border radius */
+    border-radius: 15px; 
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
     .gallery {
         padding: 0;
-        margin: 2rem -1rem; /* Negative margin to allow full-width scroll */
+        margin: 2rem -1rem;
     }
 
     .gallery-grid {
-        display: flex;  /* Change to flex for horizontal scroll */
+        display: flex;
         grid-template-columns: none;
         gap: 1rem;
-        overflow-x: auto;  /* Enable horizontal scrolling */
-        scroll-snap-type: x mandatory;  /* Snap to images while scrolling */
-        padding: 1rem;  /* Add padding back inside the scrollable area */
-        -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 1rem;
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* Hide scrollbar but keep functionality */
     .gallery-grid::-webkit-scrollbar {
         display: none;
     }
     
     .gallery-grid {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     .gallery-item {
-        flex: 0 0 80%;  /* Each item takes 80% of viewport width */
-        scroll-snap-align: start;  /* Snap points */
-        margin-right: 1rem;  /* Space between items */
+        flex: 0 0 80%;
+        scroll-snap-align: start;
+        margin-right: 1rem;
     }
 
     .gallery-item:last-child {
@@ -1906,11 +1900,10 @@ html, body {
     }
 
     .gallery-item img {
-        height: 200px;  /* Slightly smaller height for mobile */
+        height: 200px;
     }
 }
 
-/* Add scroll indicator for mobile */
 .scroll-indicator {
     display: none;
     text-align: center;
@@ -1931,7 +1924,6 @@ html, body {
     50% { opacity: 1; }
 }
 
-/* Simplified Lightbox Styles */
 .lightbox {
     display: none;
     position: fixed;
@@ -1963,7 +1955,6 @@ html, body {
     }
 }
 
-/* Mobile Optimization */
 @media (max-width: 768px) {
     .lightbox img {
         max-width: 85vw;
@@ -1971,7 +1962,6 @@ html, body {
     }
 }
 
-/* Image transitions */
 .lightbox img.fade-out {
     opacity: 0;
     transform: scale(0.9);
@@ -1984,7 +1974,6 @@ html, body {
     transition: all 0.3s ease;
 }
 
-/* Aesthetic Navigation Buttons */
 .nav-btn {
     position: fixed;
     top: 50%;
@@ -2022,7 +2011,6 @@ html, body {
     right: 20px;
 }
 
-/* Mobile Optimization */
 @media (max-width: 768px) {
     .nav-btn {
         width: 40px;
