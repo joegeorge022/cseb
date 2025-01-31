@@ -1,5 +1,4 @@
 :root {
-    /* Color Palette */
     --primary-color: #6C63FF;
     --secondary-color: #FF6B6B;
     --accent-color: #4ECDC4;
@@ -9,20 +8,17 @@
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     
-    /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     
-    /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
     --radius-full: 100px;
 }
 
-/* Base Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -39,7 +35,6 @@ body {
     padding-top: 80px;
 }
 
-/* Header & Navigation */
 .site-header {
     padding: var(--spacing-sm) 0;
     position: fixed;
@@ -127,7 +122,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -204,7 +198,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Section Styles */
 .section-title {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-sm);
@@ -217,7 +210,6 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
-/* Cards & Grid Layouts */
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -235,11 +227,10 @@ body {
     margin-bottom: var(--spacing-xs);
 }
 
-/* Instagram Feed */
 .instagram-feed {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;  /* Increased gap */
+    gap: 30px;
     justify-content: center;
     margin: 30px 0;
     padding: 20px;
@@ -252,7 +243,6 @@ body {
         inset 0 0 30px rgba(188, 19, 254, 0.1);
 }
 
-/* Instagram Post Container */
 .instagram-media {
     background: transparent !important;
     border: none !important;
@@ -264,7 +254,6 @@ body {
     overflow: hidden !important;
 }
 
-/* Target specific Instagram elements */
 .instagram-media .Content,
 .instagram-media .EmbedFrame,
 .instagram-media .EmbeddedMedia,
@@ -277,43 +266,36 @@ body {
     overflow: hidden !important;
 }
 
-/* Target the video poster image */
 .instagram-media video[poster] {
     border-radius: 15px !important;
 }
 
-/* Target the video container */
 .instagram-media ._aand > div {
     border-radius: 15px !important;
     overflow: hidden !important;
 }
 
-/* Target the play button container */
 .instagram-media ._aakh {
     border-radius: 15px !important;
 }
 
-/* Ensure images maintain rounded corners */
 .instagram-media .EmbeddedMediaImage {
     border-radius: 15px !important;
     width: 100% !important;
     height: auto !important;
 }
 
-/* Additional container styling */
 .instagram-media .EmbedFrame {
     padding-bottom: 125.0% !important;
     position: relative !important;
     width: 100% !important;
 }
 
-/* Enhanced Hover effects */
 .instagram-media:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 30px rgba(0, 255, 187, 0.15) !important;
 }
 
-/* Instagram Feed Container */
 .squad-section .instagram-feed {
     background: var(--glass-bg);
     border-radius: var(--radius-lg);
@@ -321,7 +303,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* Gallery */
 .gallery {
     margin: var(--spacing-md) 0;
     padding: 0 var(--spacing-sm);
@@ -394,7 +375,6 @@ body {
     opacity: 1;
 }
 
-/* Lightbox Styles */
 .lightbox {
     position: fixed;
     top: 0;
@@ -453,7 +433,6 @@ body {
     right: 20px;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .site-header {
         padding: var(--spacing-xs) 0;
@@ -532,7 +511,6 @@ body {
     }
 }
 
-/* Utility Classes */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -579,7 +557,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Loader Styles */
 .loader {
     position: fixed;
     top: 0;
@@ -642,7 +619,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Social Links Section */
 .social-links {
     display: flex;
     justify-content: center;
@@ -702,7 +678,6 @@ body {
     transform: scale(1.2) rotate(15deg);
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .social-link {
         padding: var(--spacing-sm) var(--spacing-md);
@@ -716,7 +691,6 @@ body {
     }
 }
 
-/* Add these styles for the no-images message */
 .no-images {
     text-align: center;
     padding: var(--spacing-md);
@@ -725,7 +699,6 @@ body {
     grid-column: 1 / -1;
 }
 
-/* Add these animation keyframes */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
@@ -736,7 +709,6 @@ body {
     50% { opacity: 1; }
 }
 
-/* Back to Top Button */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -789,7 +761,6 @@ body {
     transform: translateY(0);
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .back-to-top {
         bottom: 20px;
@@ -803,7 +774,6 @@ body {
     }
 }
 
-/* Hamburger Menu Styles */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -854,7 +824,6 @@ body {
     transform: rotate(-135deg);
 }
 
-/* Menu Overlay */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -874,7 +843,6 @@ body {
     visibility: visible;
 }
 
-/* Mobile Navigation */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
