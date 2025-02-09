@@ -296,7 +296,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 255, 187, 0.15) !important;
 }
 
-.squad-section .instagram-feed {
+.reels-section .instagram-feed {
     background: var(--glass-bg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--glass-border);
